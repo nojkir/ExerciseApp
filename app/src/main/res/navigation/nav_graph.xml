@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/trainingsFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="pl.nojkir.roomdatabase.ui.fragments.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_trainingsFragment"
+            app:destination="@id/trainingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingsFragment"
+        android:name="pl.nojkir.roomdatabase.ui.fragments.TrainingsFragment"
+        android:label="TrainingsFragment" >
+        <action
+            android:id="@+id/action_trainingsFragment_to_exercisesFragment"
+            app:destination="@id/exercisesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exercisesFragment"
+        android:name="pl.nojkir.roomdatabase.ui.fragments.ExercisesFragment"
+        android:label="ExercisesFragment" />
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="pl.nojkir.roomdatabase.ui.fragments.StatisticsFragment"
+        android:label="StatisticsFragment" />
+    <fragment
+        android:id="@+id/stopWatchFragment"
+        android:name="pl.nojkir.roomdatabase.ui.fragments.StopWatchFragment"
+        android:label="StopWatchFragment" />
+</navigation>

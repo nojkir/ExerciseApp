@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ui.MainActivity"
-    >
+    tools:context=".ui.MainActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -19,34 +18,29 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="8dp"
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvExercises"
+        app:layout_constraintStart_toStartOf="@+id/frameLayout"
+
         app:menu="@menu/bottom_navigation" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvExercises"
-        android:layout_width="360dp"
-        android:layout_height="428dp"
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-    <ImageView
-        android:id="@+id/button"
-        android:layout_width="69dp"
-        android:layout_height="63dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="36dp"
-        android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <fragment
+            android:id="@+id/navHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
