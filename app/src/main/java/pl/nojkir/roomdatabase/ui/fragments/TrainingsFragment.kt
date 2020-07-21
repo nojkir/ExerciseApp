@@ -2,10 +2,12 @@ package pl.nojkir.roomdatabase.ui.fragments
 
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -26,7 +28,7 @@ import pl.nojkir.roomdatabase.ui.ExerciseViewModel
 
 
 @AndroidEntryPoint
-class TrainingsFragment :  Fragment (R.layout.fragment_trainings) {
+class TrainingsFragment :  Fragment (R.layout.fragment_trainings){
 
     private val viewModel : ExerciseViewModel by viewModels()
 
@@ -62,4 +64,5 @@ class TrainingsFragment :  Fragment (R.layout.fragment_trainings) {
 
 
 
-    }
+
+}

@@ -13,26 +13,6 @@ import pl.nojkir.roomdatabase.data.db.entities.Exercise
 abstract class ExerciseDataBase : RoomDatabase() {
 
     abstract fun getExerciseDao(): ExerciseDao
-
-    companion object{
-        @Volatile
-        private var instance: ExerciseDataBase? = null
-        private val LOCK = Any()
-
-        operator fun invoke (context: Context ) = instance
-            ?: synchronized(LOCK){
-            instance
-                ?: createDatabase(
-                    context
-                )
-                .also { instance = it }
-        }
-
-        private fun createDatabase (context: Context) =
-            Room.databaseBuilder(context.applicationContext,
-            ExerciseDataBase::class.java, "exercise_database")
-                .build()
-    }
-
+    
 
 }

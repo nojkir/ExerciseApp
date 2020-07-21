@@ -13,6 +13,4 @@ import pl.nojkir.roomdatabase.R
 @AndroidEntryPoint
 class ExercisesFragment : Fragment (R.layout.fragment_exercises) {
 
-
-
 }

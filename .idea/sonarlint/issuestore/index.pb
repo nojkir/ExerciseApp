@@ -47,7 +47,5 @@ _
 /app/src/main/res/layout/fragment_statistics.xml,5\7\57ff85650fcf179fca10277fe27a38b87b6e1d0d
 ^
 .app/src/main/res/layout/fragment_stopwatch.xml,8\a\8a28391b9ef2d660a142105fbcf59172651fbb1e
-Y
-)app/src/main/res/navigation/nav_graph.xml,b\a\baffce053da291d96fb575a09f2bbe9aaa9c4be9
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
