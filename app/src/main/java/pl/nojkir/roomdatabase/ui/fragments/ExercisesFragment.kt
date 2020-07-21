@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import pl.nojkir.roomdatabase.R
 
-
+@AndroidEntryPoint
 class ExercisesFragment : Fragment (R.layout.fragment_exercises) {
 
 

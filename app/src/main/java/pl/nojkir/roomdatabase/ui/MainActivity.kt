@@ -2,6 +2,8 @@ package pl.nojkir.roomdatabase.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,20 +18,16 @@ import pl.nojkir.roomdatabase.data.repositories.ExerciseRepository
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel : ExerciseViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
                setSupportActionBar(findViewById(R.id.toolbar))
 
-        val dataBase = ExerciseDataBase(this)
-        val repository =
-            ExerciseRepository(dataBase)
-        val factory =
-            ExerciseViewModelFactory(repository)
 
-        val viewModel = ViewModelProvider (this, factory).get(ExerciseViewModel::class.java)
-        val adapter =
-            ExerciseAdapter(listOf(), viewModel)
+        val adapter = ExerciseAdapter(listOf(), viewModel)
 
 
         viewModel.getAllExercise().observe(this, Observer {

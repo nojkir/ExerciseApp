@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -21,27 +22,21 @@ import pl.nojkir.roomdatabase.other.ExerciseAdapter
 import pl.nojkir.roomdatabase.ui.AddDialogListener
 import pl.nojkir.roomdatabase.ui.AddExerciseDialog
 import pl.nojkir.roomdatabase.ui.ExerciseViewModel
-import pl.nojkir.roomdatabase.ui.ExerciseViewModelFactory
+
 
 
 @AndroidEntryPoint
 class TrainingsFragment :  Fragment (R.layout.fragment_trainings) {
+
+    private val viewModel : ExerciseViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
 
-            val dataBase = ExerciseDataBase(requireContext())
-            val repository =
-                ExerciseRepository(dataBase)
-            val factory =
-                ExerciseViewModelFactory(repository)
 
-
-            val viewModel = ViewModelProvider(this, factory).get(ExerciseViewModel::class.java)
-            val adapter =
-                ExerciseAdapter(listOf(), viewModel)
+            val adapter = ExerciseAdapter(listOf(), viewModel)
 
 
             rvExercises.layoutManager = LinearLayoutManager(requireContext())
