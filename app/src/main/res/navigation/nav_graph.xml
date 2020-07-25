@@ -29,6 +29,11 @@
         <action
             android:id="@+id/action_exercisesFragment_to_trainingsFragment"
             app:destination="@id/trainingsFragment" />
+        <argument
+            android:name="TrainingName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="Trening" />
     </fragment>
     <fragment
         android:id="@+id/statisticsFragment"

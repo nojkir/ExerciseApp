@@ -25,12 +25,6 @@ p
 @app/src/main/java/pl/nojkir/roomdatabase/ui/ExerciseViewModel.kt,7\e\7eb437e34360613c5e1abba6f69cf075e88b5c95
 q
 Aapp/src/main/java/pl/nojkir/roomdatabase/other/ExerciseAdapter.kt,9\6\96f01b73d694e23568dead39b337d2a500f43003
-w
-Gapp/src/main/java/pl/nojkir/roomdatabase/ui/ExerciseViewModelFactory.kt,2\5\2553df238ba227bff8112ca56df6ac889819ecf2
-p
-@app/src/main/java/pl/nojkir/roomdatabase/ui/AddExerciseDialog.kt,d\5\d54bc6b259c5502250ee2bb3eabde7a93a407a44
-p
-@app/src/main/java/pl/nojkir/roomdatabase/ui/AddDialogListener.kt,5\a\5ab6e30bafc404429862e7751fbc0c21b8b017f7
 k
 ;app/src/main/java/pl/nojkir/roomdatabase/other/Constants.kt,d\4\d4bdfc75ef23ddace227386eec367e81fed21bee
 h
@@ -39,8 +33,6 @@ n
 >app/src/main/java/pl/nojkir/roomdatabase/ui/BaseApplication.kt,1\4\143998c520392d38d65f5fd1e025542b0faf6374
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-^
-.app/src/main/res/layout/fragment_exercises.xml,6\b\6bae7b0301a5075614baba6dfabc2ceac150a159
 \
 ,app/src/main/res/layout/fragment_profile.xml,b\4\b4466735edf81a3353097aecb75b46205cdee6b6
 _
@@ -49,3 +41,7 @@ _
 .app/src/main/res/layout/fragment_stopwatch.xml,8\a\8a28391b9ef2d660a142105fbcf59172651fbb1e
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+x
+Happ/src/main/java/pl/nojkir/roomdatabase/ui/dialogs/AddExerciseDialog.kt,d\c\dc26de316655ad95a280f84a3430298e440bd549
+x
+Happ/src/main/java/pl/nojkir/roomdatabase/ui/dialogs/AddDialogListener.kt,b\a\ba66847487ef361c1478c6d0ccf88e18d0f05a4c

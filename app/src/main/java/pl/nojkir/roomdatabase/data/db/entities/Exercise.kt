@@ -1,8 +1,11 @@
 package pl.nojkir.roomdatabase.data.db.entities
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
 @Entity(tableName = "training_table")
 

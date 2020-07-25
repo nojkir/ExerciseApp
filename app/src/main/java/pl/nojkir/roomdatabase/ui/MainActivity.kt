@@ -24,16 +24,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-               setSupportActionBar(findViewById(R.id.toolbar))
+        setSupportActionBar(findViewById(R.id.toolbar))
 
 
-        val adapter = ExerciseAdapter(listOf(), viewModel)
 
-
-        viewModel.getAllExercise().observe(this, Observer {
-            adapter.items = it
-            adapter.notifyDataSetChanged()
-        })
 
 
     }

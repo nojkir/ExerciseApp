@@ -1,4 +1,4 @@
-package pl.nojkir.roomdatabase.ui
+package pl.nojkir.roomdatabase.ui.dialogs
 
 import pl.nojkir.roomdatabase.data.db.entities.Exercise
 
