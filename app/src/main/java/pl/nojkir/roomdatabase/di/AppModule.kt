@@ -9,7 +9,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import pl.nojkir.roomdatabase.data.ExerciseDataBase
+
+import pl.nojkir.roomdatabase.other.Constants
 import pl.nojkir.roomdatabase.other.Constants.EXERCISE_DATABASE_NAME
+import pl.nojkir.roomdatabase.other.Constants.TRAINING_DATABASE_NAME
 import javax.inject.Singleton
 
 
@@ -30,8 +33,15 @@ object AppModule {
     ).build()
 
 
+
+
+
+
     @Singleton
     @Provides
-
     fun providesExerciseDao (db: ExerciseDataBase) = db.getExerciseDao()
+
+
 }
+
+

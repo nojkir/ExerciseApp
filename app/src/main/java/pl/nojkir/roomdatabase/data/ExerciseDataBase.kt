@@ -8,11 +8,12 @@ import pl.nojkir.roomdatabase.data.db.entities.Exercise
 
 @Database(
     entities = [Exercise::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class ExerciseDataBase : RoomDatabase() {
 
     abstract fun getExerciseDao(): ExerciseDao
-    
+
 
 }

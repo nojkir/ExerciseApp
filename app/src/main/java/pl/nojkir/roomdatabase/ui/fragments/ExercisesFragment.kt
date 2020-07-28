@@ -1,61 +1,67 @@
 package pl.nojkir.roomdatabase.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.TextView
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_exercises.*
 import kotlinx.android.synthetic.main.fragment_trainings.*
 import pl.nojkir.roomdatabase.R
+import pl.nojkir.roomdatabase.data.db.entities.Exercise
+import pl.nojkir.roomdatabase.other.ExercisesAdapter
 import pl.nojkir.roomdatabase.ui.ExerciseViewModel
+import pl.nojkir.roomdatabase.ui.dialogs.AddDialogListener
+import pl.nojkir.roomdatabase.ui.dialogs.AddExerciseDialog
+
 
 @AndroidEntryPoint
 class ExercisesFragment : Fragment(R.layout.fragment_exercises) {
 
 
     private val viewModel: ExerciseViewModel by viewModels()
+
+
     lateinit var trainingName: String
-    lateinit var exerciseName: String
-    lateinit var reps: String
-    lateinit var sets: String
-    lateinit var weight: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         trainingName = requireArguments().getString("TrainingName").toString()
-        exerciseName = requireArguments().getString("ExerciseName").toString()
-        reps = requireArguments().getString("Reps").toString()
-        sets = requireArguments().getString("Sets").toString()
-        weight = requireArguments().getString("Weight").toString()
 
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = ExercisesAdapter(listOf(), viewModel)
+
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapter
 
 
+        viewModel.findExercisesByTrainingName(trainingName).observe(viewLifecycleOwner, Observer {
+            adapter.items = it
+            adapter.notifyDataSetChanged()
+        })
 
-        view.findViewById<TextView>(R.id.training).text = trainingName
-        view.findViewById<TextView>(R.id.exercise).text = exerciseName
-        view.findViewById<TextView>(R.id.dispaySets).text = sets
-        view.findViewById<TextView>(R.id.displayReps).text = reps
-        view.findViewById<TextView>(R.id.displayWeight).text = weight
-
-        button2.setOnClickListener {
+        buttonek.setOnClickListener {
+            AddExerciseDialog(requireContext(), object : AddDialogListener {
+                override fun onAddButtonClicked(exercise: Exercise) {
+                    viewModel.upsert(exercise)
+                }
+            }).show()
 
         }
+
+
+
+
+
+
 
 
     }

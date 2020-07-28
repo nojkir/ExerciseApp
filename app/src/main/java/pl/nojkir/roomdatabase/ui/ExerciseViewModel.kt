@@ -18,9 +18,15 @@ class ExerciseViewModel @ViewModelInject constructor(
         repository.delete(exercise)
     }
 
-
+        fun deleteByName(trainingName: String) = CoroutineScope(Dispatchers.Main).launch {
+            repository.deleteByName(trainingName)
+        }
 
         fun getAllExercise() = repository.getAllExercise()
+
+        fun getAllNames() = repository.getAllNames()
+
+        fun findExercisesByTrainingName(trainingName : String) = repository.findExercisesByTrainingName(trainingName)
 
 
 }

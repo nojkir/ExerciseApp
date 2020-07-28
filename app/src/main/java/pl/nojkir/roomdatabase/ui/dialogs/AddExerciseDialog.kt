@@ -27,6 +27,7 @@ class AddExerciseDialog (context: Context, var addDialogListener: AddDialogListe
                 return@setOnClickListener
             }
 
+
             val exercise = Exercise(
                 trainingName,
                 exerciseName,

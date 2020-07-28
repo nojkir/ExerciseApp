@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_trainings.*
 import pl.nojkir.roomdatabase.R
 import pl.nojkir.roomdatabase.data.db.entities.Exercise
-import pl.nojkir.roomdatabase.other.ExerciseAdapter
+import pl.nojkir.roomdatabase.other.TrainingsAdapter
 import pl.nojkir.roomdatabase.ui.dialogs.AddDialogListener
 import pl.nojkir.roomdatabase.ui.dialogs.AddExerciseDialog
 import pl.nojkir.roomdatabase.ui.ExerciseViewModel
@@ -24,7 +24,7 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ExerciseAdapter(listOf(), viewModel)
+        val adapter = TrainingsAdapter(listOf(), viewModel)
 
         rvExercises.layoutManager = LinearLayoutManager(requireContext())
         rvExercises.adapter = adapter
@@ -32,10 +32,12 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
 
 
-        viewModel.getAllExercise().observe(viewLifecycleOwner, Observer {
-            adapter.items = it
+        viewModel.getAllNames().observe(viewLifecycleOwner, Observer {
+            adapter.items = it.toSet().toList()
             adapter.notifyDataSetChanged()
         })
+
+
 
 
 
