@@ -35,18 +35,12 @@ n
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 \
 ,app/src/main/res/layout/fragment_profile.xml,b\4\b4466735edf81a3353097aecb75b46205cdee6b6
-_
-/app/src/main/res/layout/fragment_statistics.xml,5\7\57ff85650fcf179fca10277fe27a38b87b6e1d0d
-^
-.app/src/main/res/layout/fragment_stopwatch.xml,8\a\8a28391b9ef2d660a142105fbcf59172651fbb1e
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 x
 Happ/src/main/java/pl/nojkir/roomdatabase/ui/dialogs/AddExerciseDialog.kt,d\c\dc26de316655ad95a280f84a3430298e440bd549
 x
 Happ/src/main/java/pl/nojkir/roomdatabase/ui/dialogs/AddDialogListener.kt,b\a\ba66847487ef361c1478c6d0ccf88e18d0f05a4c
-Y
-)app/src/main/res/navigation/nav_graph.xml,b\a\baffce053da291d96fb575a09f2bbe9aaa9c4be9
 v
 Fapp/src/main/java/pl/nojkir/roomdatabase/data/converters/Converters.kt,4\f\4fa989397fb754ded3680e76dddbaa11c9c33c32
 €

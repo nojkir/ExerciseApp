@@ -7,5 +7,5 @@ import pl.nojkir.roomdatabase.R
 
 
 @AndroidEntryPoint
-class StatisticsFragment : FragmentActivity (R.layout.fragment_statistics) {
+class StatisticsFragment : Fragment (R.layout.fragment_statistics) {
 }

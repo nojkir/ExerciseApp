@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/trainingsFragment"
         android:name="pl.nojkir.roomdatabase.ui.fragments.TrainingsFragment"
-        android:label="TrainingsFragment" >
+        android:label="List of Trainings" >
         <action
             android:id="@+id/action_trainingsFragment_to_exercisesFragment"
             app:destination="@id/exercisesFragment" />
@@ -38,9 +38,9 @@
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="pl.nojkir.roomdatabase.ui.fragments.StatisticsFragment"
-        android:label="StatisticsFragment" />
+        android:label="Statistics" />
     <fragment
         android:id="@+id/stopWatchFragment"
         android:name="pl.nojkir.roomdatabase.ui.fragments.StopWatchFragment"
-        android:label="StopWatchFragment" />
+        android:label="Stop Watch" />
 </navigation>

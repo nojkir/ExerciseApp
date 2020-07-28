@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/Statistic"
+        android:id="@+id/statisticsFragment"
         android:icon="@drawable/ic_stats"
-        android:title="Statistic"/>
+        android:title="Statistics"/>
 
     <item
-        android:id="@+id/Template"
+        android:id="@+id/trainingsFragment"
         android:icon="@drawable/ic_template"
-        android:title="Template"/>
+        android:title="Training List"/>
 
     <item
-        android:id="@+id/timer"
+        android:id="@+id/stopWatchFragment"
         android:icon="@drawable/ic_timer"
         android:title="Timer"/>
 
