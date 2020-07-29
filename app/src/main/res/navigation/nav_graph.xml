@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/exercisesFragment"
         android:name="pl.nojkir.roomdatabase.ui.fragments.ExercisesFragment"
-        android:label="ExercisesFragment" >
+        android:label="Exercises List" >
         <action
             android:id="@+id/action_exercisesFragment_to_trainingsFragment"
             app:destination="@id/trainingsFragment" />

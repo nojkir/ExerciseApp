@@ -23,8 +23,6 @@ x
 Happ/src/main/java/pl/nojkir/roomdatabase/ui/fragments/ProfileFragment.kt,4\f\4f4eb36b6e6ce216c08084e714736d05bf0573b2
 p
 @app/src/main/java/pl/nojkir/roomdatabase/ui/ExerciseViewModel.kt,7\e\7eb437e34360613c5e1abba6f69cf075e88b5c95
-q
-Aapp/src/main/java/pl/nojkir/roomdatabase/other/ExerciseAdapter.kt,9\6\96f01b73d694e23568dead39b337d2a500f43003
 k
 ;app/src/main/java/pl/nojkir/roomdatabase/other/Constants.kt,d\4\d4bdfc75ef23ddace227386eec367e81fed21bee
 h
@@ -43,15 +41,3 @@ x
 Happ/src/main/java/pl/nojkir/roomdatabase/ui/dialogs/AddDialogListener.kt,b\a\ba66847487ef361c1478c6d0ccf88e18d0f05a4c
 v
 Fapp/src/main/java/pl/nojkir/roomdatabase/data/converters/Converters.kt,4\f\4fa989397fb754ded3680e76dddbaa11c9c33c32
-€
-Papp/src/main/java/pl/nojkir/roomdatabase/data/repositories/TrainingRepository.kt,e\4\e4d21a106a2ab6c0e00c7b9181f9429c169830b9
-u
-Eapp/src/main/java/pl/nojkir/roomdatabase/data/db/entities/Training.kt,6\e\6e51000c7935aebd8b82fd211fac2fd8ec03ccfd
-l
-<app/src/main/java/pl/nojkir/roomdatabase/data/TrainingDao.kt,8\f\8f7e0d63cc91bd68d771b033e6989f43a714c0ce
-q
-Aapp/src/main/java/pl/nojkir/roomdatabase/data/TrainingDataBase.kt,2\6\26f3c44863fb15e85294878c03f85a1af354ab35
-p
-@app/src/main/java/pl/nojkir/roomdatabase/ui/TrainingViewModel.kt,d\1\d17cd877fec18bc4d3fea2514b4ede546125af8b
-k
-;app/src/main/java/pl/nojkir/roomdatabase/di/SecondModule.kt,2\0\201565a814a70a7d8626d25dbd11e1d47ed52e81

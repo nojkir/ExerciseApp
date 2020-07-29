@@ -11,12 +11,14 @@ import pl.nojkir.roomdatabase.data.db.entities.Exercise
 class AddExerciseDialog (context: Context, var addDialogListener: AddDialogListener)
     :AppCompatDialog(context){
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_add_exercise_item)
 
 
         btAdd.setOnClickListener {
+
             val trainingName = etTrainingName.text.toString()
             val exerciseName = etExerciseName.text.toString()
             val reps = etReps.text.toString()

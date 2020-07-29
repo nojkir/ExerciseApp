@@ -43,6 +43,7 @@ class ExercisesFragment : Fragment(R.layout.fragment_exercises) {
         recyclerView.adapter = adapter
 
 
+
         viewModel.findExercisesByTrainingName(trainingName).observe(viewLifecycleOwner, Observer {
             adapter.items = it
             adapter.notifyDataSetChanged()
