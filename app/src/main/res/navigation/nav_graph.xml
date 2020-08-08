@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_trainingsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_trainingsFragment_to_statisticsFragment2"
+            app:destination="@id/statisticsFragment" />
     </fragment>
     <fragment
         android:id="@+id/exercisesFragment"
