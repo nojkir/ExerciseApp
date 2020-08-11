@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/cardview_shadow_start_color"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
+    android:background="@color/cardview_shadow_start_color"
     android:padding="10dp">
 
     <TextView
@@ -16,42 +15,51 @@
         android:layout_height="29dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="Training Name"
+        android:textSize="20sp"
+
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tVSets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        android:text="TextView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="How much sets"
+        android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/tVReps"
-        app:layout_constraintHorizontal_bias="0.338"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exerciseNameTextView" />
 
     <TextView
         android:id="@+id/tVReps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="92dp"
-        android:text="TextView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="How much reps"
+        android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/tVWeight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tVSets"
         app:layout_constraintTop_toBottomOf="@+id/exerciseNameTextView" />
 
     <TextView
         android:id="@+id/tVWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
-        android:text="TextView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="How much weight"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tVReps"
         app:layout_constraintTop_toBottomOf="@+id/exerciseNameTextView" />
 
     <androidx.appcompat.widget.AppCompatImageButton

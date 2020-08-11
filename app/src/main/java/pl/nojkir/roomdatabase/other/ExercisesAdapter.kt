@@ -40,9 +40,9 @@ class ExercisesAdapter(
         val currentExercise = items[position]
 
         holder.itemView.exerciseNameTextView.text = currentExercise.exerciseName
-        holder.itemView.tVReps.text = currentExercise.reps.toString()
-        holder.itemView.tVSets.text = currentExercise.amountOfSeries.toString()
-        holder.itemView.tVWeight.text = currentExercise.weight.toString()
+        holder.itemView.tVReps.text = "Reps: ${currentExercise.reps.toString()}"
+        holder.itemView.tVSets.text = "Sets: ${currentExercise.amountOfSeries.toString()}"
+        holder.itemView.tVWeight.text = "Weight ${currentExercise.weight.toString()}"
 
 
 

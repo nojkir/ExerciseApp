@@ -31,8 +31,6 @@ n
 >app/src/main/java/pl/nojkir/roomdatabase/ui/BaseApplication.kt,1\4\143998c520392d38d65f5fd1e025542b0faf6374
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-\
-,app/src/main/res/layout/fragment_profile.xml,b\4\b4466735edf81a3353097aecb75b46205cdee6b6
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 x

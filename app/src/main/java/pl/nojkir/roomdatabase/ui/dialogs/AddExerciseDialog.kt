@@ -33,9 +33,9 @@ class AddExerciseDialog (context: Context, var addDialogListener: AddDialogListe
             val exercise = Exercise(
                 trainingName,
                 exerciseName,
-                reps.toInt(),
+                sets.toInt(),
                 weight.toDouble(),
-                sets.toInt()
+                reps.toInt()
             )
             addDialogListener.onAddButtonClicked(exercise)
             dismiss()
