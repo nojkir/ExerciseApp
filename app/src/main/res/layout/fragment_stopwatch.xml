@@ -20,26 +20,16 @@
         app:layout_constraintVertical_bias="0.367">
 
 
-        <Chronometer
-            android:id="@+id/chronometer"
-            android:layout_width="258dp"
-            android:layout_height="241dp"
-            android:gravity="center"
-            android:textSize="60sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
-            android:id="@+id/info_TV"
+            android:id="@+id/tv_Timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="INFO TEXT"
+            android:gravity="center"
+            android:hint="00:00:00:00"
+
             android:textSize="25sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
