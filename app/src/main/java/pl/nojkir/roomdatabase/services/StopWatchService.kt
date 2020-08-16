@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
@@ -15,7 +16,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pl.nojkir.roomdatabase.R
+import pl.nojkir.roomdatabase.other.Constants.ACTION_PAUSE_SERVICE
 import pl.nojkir.roomdatabase.other.Constants.ACTION_START_OR_RESUME_SERVICE
+import pl.nojkir.roomdatabase.other.Constants.ACTION_STOP_SERVICE
 import pl.nojkir.roomdatabase.other.Constants.NOTIFICATION_CHANNEL_ID
 import pl.nojkir.roomdatabase.other.Constants.NOTIFICATION_CHANNEL_NAME
 import pl.nojkir.roomdatabase.ui.MainActivity
@@ -50,10 +53,14 @@ class StopWatchService : LifecycleService() {
             when(it.action){
                 ACTION_START_OR_RESUME_SERVICE ->
                     if (isFirstRun){
+                        startForegroundService()
                         isFirstRun = false
                     }else{
                         startTimer()
                     }
+                ACTION_PAUSE_SERVICE -> pausesService()
+                ACTION_STOP_SERVICE -> Log.d("Action", "Stop service")
+                else -> Log.d("Action", "Else branch")
             }
 
         }
