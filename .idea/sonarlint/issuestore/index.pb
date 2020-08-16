@@ -41,8 +41,6 @@ v
 Fapp/src/main/java/pl/nojkir/roomdatabase/data/converters/Converters.kt,4\f\4fa989397fb754ded3680e76dddbaa11c9c33c32
 r
 Bapp/src/main/java/pl/nojkir/roomdatabase/other/TrainingsAdapter.kt,4\4\44f29c3f115e3cebcbfabf56c858ccc2fdf4717d
-Y
-)app/src/main/res/layout/exercise_item.xml,8\1\8109fdf18d3a0cacc9f5a0069984a1ed31fc7c37
 r
 Bapp/src/main/java/pl/nojkir/roomdatabase/other/ExercisesAdapter.kt,7\9\79e5fc38852673927c61a1b514a6eec13f22b68d
 q

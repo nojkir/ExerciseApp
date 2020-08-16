@@ -53,6 +53,7 @@ class ExercisesFragment : Fragment(R.layout.fragment_exercises) {
         buttonek.setOnClickListener {
             AddExerciseDialog(requireContext(), object : AddDialogListener {
                 override fun onAddButtonClicked(exercise: Exercise) {
+
                     viewModel.upsert(exercise)
                 }
             }).show()
