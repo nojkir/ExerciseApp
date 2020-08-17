@@ -22,7 +22,6 @@ object ServiceModule {
 
     @ServiceScoped
     @Provides
-
     fun provideMainActivityPendingIntent(
         @ApplicationContext app: Context
     ) = PendingIntent.getActivity(
@@ -36,7 +35,6 @@ object ServiceModule {
 
     @ServiceScoped
     @Provides
-
     fun provideBaseNotificationBuilder(
         @ApplicationContext app:Context,
         pendingIntent: PendingIntent
@@ -44,6 +42,7 @@ object ServiceModule {
         .setAutoCancel(false)
         .setOngoing(true)
         .setSmallIcon(R.drawable.ic_timer)
+        .setContentTitle("ExerciseApp")
         .setContentText("00:00:00")
         .setContentIntent(pendingIntent)
 }

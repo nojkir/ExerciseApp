@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
+import android.app.PendingIntent.getService
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -12,6 +13,8 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -24,8 +27,10 @@ import pl.nojkir.roomdatabase.other.Constants.ACTION_STOP_SERVICE
 import pl.nojkir.roomdatabase.other.Constants.NOTIFICATION_CHANNEL_ID
 import pl.nojkir.roomdatabase.other.Constants.NOTIFICATION_CHANNEL_NAME
 import pl.nojkir.roomdatabase.ui.MainActivity
+import pl.nojkir.roomdatabase.ui.fragments.StopWatchFragment
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-
+@AndroidEntryPoint
 class StopWatchService : LifecycleService() {
 
     @Inject
@@ -51,8 +56,13 @@ class StopWatchService : LifecycleService() {
 
 
     override fun onCreate() {
-        postInitialValues()
         super.onCreate()
+        currentNotificationBuilder = baseNotificationBuilder
+        postInitialValues()
+        isTracking.observe(this, Observer {
+            updateNotificationTrackingState(it)
+        })
+
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -118,6 +128,12 @@ class StopWatchService : LifecycleService() {
         }
         startForeground(NOTIFICATION_ID, baseNotificationBuilder.build())
 
+        timeInSeconds.observe(this, Observer {
+            val notification = currentNotificationBuilder
+                .setContentText(getFormattedStopWatchTime(it * 1000))
+            notificationManager.notify(NOTIFICATION_ID, notification.build())
+        })
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -131,6 +147,50 @@ class StopWatchService : LifecycleService() {
         notificationManager.createNotificationChannel(channel)
     }
 
+private fun updateNotificationTrackingState( isTracking: Boolean){
+    val notificationActionText = if (isTracking) "Pause" else "Resume"
+    val pendingIntent = if (isTracking){
+        val pauseIntent = Intent(this, StopWatchService::class.java).apply {
+            action = ACTION_PAUSE_SERVICE
+        }
+        PendingIntent.getService(this, 1 , pauseIntent, FLAG_UPDATE_CURRENT)
+    } else {
+        val resumeIntent = Intent(this, StopWatchService::class.java).apply {
+            action = ACTION_START_OR_RESUME_SERVICE
+        }
+        getService(this, 2, resumeIntent, FLAG_UPDATE_CURRENT)
+    }
 
+    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+    currentNotificationBuilder.javaClass.getDeclaredField("mActions").apply {
+        isAccessible = true
+        set(currentNotificationBuilder, ArrayList<NotificationCompat.Action>())
+    }
+
+    currentNotificationBuilder = baseNotificationBuilder
+        .addAction(R.drawable.ic_timer, notificationActionText, pendingIntent)
+    notificationManager.notify(NOTIFICATION_ID, currentNotificationBuilder.build())
+}
+    fun getFormattedStopWatchTime(ms: Long, includeMillis : Boolean = false) :String{
+        var milliseconds = ms
+        val hours = TimeUnit.MILLISECONDS.toHours(milliseconds)
+        milliseconds -= TimeUnit.HOURS.toMillis(hours)
+        val minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds)
+        milliseconds -= TimeUnit.MINUTES.toMillis(minutes)
+        val seconds = TimeUnit.MILLISECONDS.toSeconds(milliseconds)
+        if (!includeMillis){
+            return "${if (hours < 10) "0" else ""}$hours:" +
+                    "${if (minutes < 10) "0" else ""}$minutes:" +
+                    "${if (seconds < 10) "0" else ""}$seconds"
+        }
+        milliseconds -= TimeUnit.SECONDS.toMillis(seconds)
+        milliseconds /= 10
+
+        return "${if (hours < 10) "0" else ""}$hours:" +
+                "${if (minutes < 10) "0" else ""}$minutes:" +
+                "${if (seconds < 10) "0" else ""}$seconds:" +
+                "${if (milliseconds < 10) "0" else ""}$milliseconds"
+    }
 
 }
