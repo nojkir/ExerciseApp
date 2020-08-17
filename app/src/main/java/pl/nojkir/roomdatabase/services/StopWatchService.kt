@@ -42,6 +42,7 @@ class StopWatchService : LifecycleService() {
         var timeInMillis = MutableLiveData<Long>()
         var isTracking = MutableLiveData<Boolean>()
     }
+    var serviceKilled = false
     private val timeInSeconds = MutableLiveData<Long>()
     private var isFirstRun : Boolean = true
     private val NOTIFICATION_ID = 1
@@ -77,13 +78,25 @@ class StopWatchService : LifecycleService() {
                         startTimer()
                     }
                 ACTION_PAUSE_SERVICE -> pausesService()
-                ACTION_STOP_SERVICE -> Log.d("Action", "Stop service")
+                ACTION_STOP_SERVICE -> {
+                    Log.d("Action", "Stop service")
+                    killService()
+                }
                 else -> Log.d("Action", "Else branch")
+
             }
 
         }
 
         return super.onStartCommand(intent, flags, startId)
+    }
+    private fun killService(){
+        serviceKilled = true
+        isFirstRun = true
+        pausesService()
+        postInitialValues()
+        stopForeground(false)
+        stopSelf()
     }
 
     private var isTimerEnabled = false
@@ -129,10 +142,13 @@ class StopWatchService : LifecycleService() {
         startForeground(NOTIFICATION_ID, baseNotificationBuilder.build())
 
         timeInSeconds.observe(this, Observer {
-            val notification = currentNotificationBuilder
-                .setContentText(getFormattedStopWatchTime(it * 1000))
-            notificationManager.notify(NOTIFICATION_ID, notification.build())
+            if (!serviceKilled) {
+                val notification = currentNotificationBuilder
+                    .setContentText(getFormattedStopWatchTime(it * 1000))
+                notificationManager.notify(NOTIFICATION_ID, notification.build())
+            }
         })
+
 
     }
 
@@ -167,10 +183,11 @@ private fun updateNotificationTrackingState( isTracking: Boolean){
         isAccessible = true
         set(currentNotificationBuilder, ArrayList<NotificationCompat.Action>())
     }
-
-    currentNotificationBuilder = baseNotificationBuilder
-        .addAction(R.drawable.ic_timer, notificationActionText, pendingIntent)
-    notificationManager.notify(NOTIFICATION_ID, currentNotificationBuilder.build())
+        if (!serviceKilled) {
+            currentNotificationBuilder = baseNotificationBuilder
+                .addAction(R.drawable.ic_timer, notificationActionText, pendingIntent)
+            notificationManager.notify(NOTIFICATION_ID, currentNotificationBuilder.build())
+        }
 }
     fun getFormattedStopWatchTime(ms: Long, includeMillis : Boolean = false) :String{
         var milliseconds = ms

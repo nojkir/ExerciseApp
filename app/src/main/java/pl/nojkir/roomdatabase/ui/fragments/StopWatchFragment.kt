@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_stopwatch.*
 import pl.nojkir.roomdatabase.R
 import pl.nojkir.roomdatabase.other.Constants.ACTION_PAUSE_SERVICE
 import pl.nojkir.roomdatabase.other.Constants.ACTION_START_OR_RESUME_SERVICE
+import pl.nojkir.roomdatabase.other.Constants.ACTION_STOP_SERVICE
 import pl.nojkir.roomdatabase.services.StopWatchService
 import pl.nojkir.roomdatabase.ui.StopWatchViewModel
 import java.util.concurrent.TimeUnit
@@ -60,6 +61,10 @@ class StopWatchFragment : Fragment(R.layout.fragment_stopwatch) {
         }
         start.setOnClickListener {
             sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
+        }
+
+        reset.setOnClickListener {
+            sendCommandToService(ACTION_STOP_SERVICE)
         }
 
         subscribe()
