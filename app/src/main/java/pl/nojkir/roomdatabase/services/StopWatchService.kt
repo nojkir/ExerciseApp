@@ -116,18 +116,7 @@ class StopWatchService : LifecycleService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             createNotificationChannel(notificationManager)
         }
-
-        val notificationIntent = Intent(this, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
-        val notification = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
-            .setContentTitle("Exercise App")
-            .setContentText("00:00:00")
-            .setSmallIcon(R.drawable.ic_timer)
-            .setContentIntent(getMainActivityPendingIntent())
-            .build()
-
-
-        startForeground(NOTIFICATION_ID, notification)
+        startForeground(NOTIFICATION_ID, baseNotificationBuilder.build())
 
     }
 
@@ -142,13 +131,6 @@ class StopWatchService : LifecycleService() {
         notificationManager.createNotificationChannel(channel)
     }
 
-    private fun getMainActivityPendingIntent() = PendingIntent.getActivity(
-        this,
-        0,
-        Intent(this, MainActivity::class.java).also {
-            it.action = ACTION_SHOW_STOPWATCH_FRAGMENT
-        },
-        FLAG_UPDATE_CURRENT
-    )
+
 
 }
