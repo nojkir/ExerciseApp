@@ -75,6 +75,8 @@ class StopWatchFragment : Fragment(R.layout.fragment_stopwatch) {
             val formattedText = getFormattedStopWatchTime(currentTimeInMillis, true)
             tv_Timer.text = formattedText
         })
+
+
     }
 
     private fun updateTracking (isTracking : Boolean) {

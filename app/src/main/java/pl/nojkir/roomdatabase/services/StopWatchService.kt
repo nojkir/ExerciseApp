@@ -3,6 +3,7 @@ package pl.nojkir.roomdatabase.services
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -17,13 +18,20 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pl.nojkir.roomdatabase.R
 import pl.nojkir.roomdatabase.other.Constants.ACTION_PAUSE_SERVICE
+import pl.nojkir.roomdatabase.other.Constants.ACTION_SHOW_STOPWATCH_FRAGMENT
 import pl.nojkir.roomdatabase.other.Constants.ACTION_START_OR_RESUME_SERVICE
 import pl.nojkir.roomdatabase.other.Constants.ACTION_STOP_SERVICE
 import pl.nojkir.roomdatabase.other.Constants.NOTIFICATION_CHANNEL_ID
 import pl.nojkir.roomdatabase.other.Constants.NOTIFICATION_CHANNEL_NAME
 import pl.nojkir.roomdatabase.ui.MainActivity
+import javax.inject.Inject
 
 class StopWatchService : LifecycleService() {
+
+    @Inject
+    lateinit var baseNotificationBuilder : NotificationCompat.Builder
+
+    lateinit var currentNotificationBuilder : NotificationCompat.Builder
 
     companion object{
         var timeInMillis = MutableLiveData<Long>()
@@ -115,7 +123,7 @@ class StopWatchService : LifecycleService() {
             .setContentTitle("Exercise App")
             .setContentText("00:00:00")
             .setSmallIcon(R.drawable.ic_timer)
-            .setContentIntent(pendingIntent)
+            .setContentIntent(getMainActivityPendingIntent())
             .build()
 
 
@@ -133,5 +141,14 @@ class StopWatchService : LifecycleService() {
 
         notificationManager.createNotificationChannel(channel)
     }
+
+    private fun getMainActivityPendingIntent() = PendingIntent.getActivity(
+        this,
+        0,
+        Intent(this, MainActivity::class.java).also {
+            it.action = ACTION_SHOW_STOPWATCH_FRAGMENT
+        },
+        FLAG_UPDATE_CURRENT
+    )
 
 }

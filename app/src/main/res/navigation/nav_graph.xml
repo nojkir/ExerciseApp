@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
     app:startDestination="@id/trainingsFragment">
 
+    <action android:id="@+id/action_global_stopWatchFragment"
+        app:destination="@id/stopWatchFragment"
+        app:launchSingleTop="true"/>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="pl.nojkir.roomdatabase.ui.fragments.ProfileFragment"
