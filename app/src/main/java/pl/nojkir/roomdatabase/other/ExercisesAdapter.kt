@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.exercise_item.view.*
 import pl.nojkir.roomdatabase.R
 import pl.nojkir.roomdatabase.data.db.entities.Exercise
-import pl.nojkir.roomdatabase.ui.ExerciseViewModel
+import pl.nojkir.roomdatabase.ui.viewModels.ExerciseViewModel
 
 class ExercisesAdapter(
     var items: List<Exercise>,

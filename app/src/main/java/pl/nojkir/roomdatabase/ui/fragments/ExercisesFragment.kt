@@ -2,18 +2,16 @@ package pl.nojkir.roomdatabase.ui.fragments
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_exercises.*
-import kotlinx.android.synthetic.main.fragment_trainings.*
 import pl.nojkir.roomdatabase.R
 import pl.nojkir.roomdatabase.data.db.entities.Exercise
 import pl.nojkir.roomdatabase.other.ExercisesAdapter
-import pl.nojkir.roomdatabase.ui.ExerciseViewModel
+import pl.nojkir.roomdatabase.ui.viewModels.ExerciseViewModel
 import pl.nojkir.roomdatabase.ui.dialogs.AddDialogListener
 import pl.nojkir.roomdatabase.ui.dialogs.AddExerciseDialog
 

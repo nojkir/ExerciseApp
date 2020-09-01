@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,8 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import pl.nojkir.roomdatabase.R
 import pl.nojkir.roomdatabase.other.Constants.ACTION_SHOW_STOPWATCH_FRAGMENT
-import pl.nojkir.roomdatabase.services.StopWatchService
-import java.util.concurrent.TimeUnit
+import pl.nojkir.roomdatabase.ui.viewModels.ExerciseViewModel
 
 
 @AndroidEntryPoint

@@ -1,20 +1,15 @@
 package pl.nojkir.roomdatabase.ui.fragments
 
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.View
-import android.widget.Chronometer
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_statistics.*
 import pl.nojkir.roomdatabase.R
 import pl.nojkir.roomdatabase.data.db.entities.Exercise
-import pl.nojkir.roomdatabase.ui.ExerciseViewModel
+import pl.nojkir.roomdatabase.ui.viewModels.ExerciseViewModel
 
 
 @AndroidEntryPoint

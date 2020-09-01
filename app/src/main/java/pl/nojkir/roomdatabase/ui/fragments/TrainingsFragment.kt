@@ -13,7 +13,7 @@ import pl.nojkir.roomdatabase.data.db.entities.Exercise
 import pl.nojkir.roomdatabase.other.TrainingsAdapter
 import pl.nojkir.roomdatabase.ui.dialogs.AddDialogListener
 import pl.nojkir.roomdatabase.ui.dialogs.AddExerciseDialog
-import pl.nojkir.roomdatabase.ui.ExerciseViewModel
+import pl.nojkir.roomdatabase.ui.viewModels.ExerciseViewModel
 
 
 

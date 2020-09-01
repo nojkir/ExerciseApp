@@ -2,17 +2,14 @@ package pl.nojkir.roomdatabase.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Chronometer
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_stopwatch.*
 import pl.nojkir.roomdatabase.R
@@ -20,7 +17,7 @@ import pl.nojkir.roomdatabase.other.Constants.ACTION_PAUSE_SERVICE
 import pl.nojkir.roomdatabase.other.Constants.ACTION_START_OR_RESUME_SERVICE
 import pl.nojkir.roomdatabase.other.Constants.ACTION_STOP_SERVICE
 import pl.nojkir.roomdatabase.services.StopWatchService
-import pl.nojkir.roomdatabase.ui.StopWatchViewModel
+import pl.nojkir.roomdatabase.ui.viewModels.StopWatchViewModel
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package pl.nojkir.roomdatabase.ui
+package pl.nojkir.roomdatabase.ui.viewModels
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
@@ -25,10 +25,10 @@ class ExerciseViewModel @ViewModelInject constructor(
 
     fun getAllExercise() = repository.getAllExercise()
 
-    fun getAllNames() = repository.getAllNames()
 
-    fun findExercisesByTrainingName(trainingName: String) =
-        repository.findExercisesByTrainingName(trainingName)
+
+    fun findExercisesByTrainingName(trainingId: Int) =
+        repository.findExercisesByTrainingName(trainingId)
 
 
 }

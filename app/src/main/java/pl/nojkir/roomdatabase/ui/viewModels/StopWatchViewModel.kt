@@ -1,4 +1,4 @@
-package pl.nojkir.roomdatabase.ui
+package pl.nojkir.roomdatabase.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 
