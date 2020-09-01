@@ -15,18 +15,16 @@ interface ExerciseDao {
     @Delete
     suspend fun delete(vararg exercise: Exercise)
 
-    @Query("DELETE FROM training_table WHERE training_name = :trainingName")
+    @Query("DELETE FROM exercises_table WHERE exercise_name = :trainingName")
     suspend fun deleteByName(trainingName: String)
 
 
-    @Query("SELECT * FROM training_table")
+    @Query("SELECT * FROM exercises_table")
     fun getAllExercise(): LiveData<List<Exercise>>
 
-    @Query("SELECT training_name from training_table")
-    fun getAllNames(): LiveData<List<String>>
 
-    @Query("SELECT * FROM training_table WHERE training_name = :trainingName")
-    fun findExercisesByTrainingName(trainingName: String): LiveData<List<Exercise>>
+    @Query("SELECT * FROM exercises_table WHERE training_id = :trainingId")
+    fun findExercisesByTrainingName(trainingId: Int): LiveData<List<Exercise>>
 
 
 }
