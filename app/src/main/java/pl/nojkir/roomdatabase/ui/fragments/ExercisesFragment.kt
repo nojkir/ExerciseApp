@@ -23,13 +23,13 @@ class ExercisesFragment : Fragment(R.layout.fragment_exercises) {
     private val viewModel: ExerciseViewModel by viewModels()
 
 
-    lateinit var trainingName: String
+    lateinit var trainingId: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        trainingName = requireArguments().getString("TrainingName").toString()
+        trainingId = requireArguments().getBundle("TrainingId").toString()
 
 
     }
@@ -44,7 +44,7 @@ class ExercisesFragment : Fragment(R.layout.fragment_exercises) {
 
 
 
-        viewModel.findExercisesByTrainingName(trainingName).observe(viewLifecycleOwner, Observer {
+        viewModel.findExercisesByTrainingName(trainingId.toInt()).observe(viewLifecycleOwner, Observer {
             adapter.items = it
             adapter.notifyDataSetChanged()
         })

@@ -9,11 +9,13 @@ import androidx.navigation.Navigation.createNavigateOnClickListener
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.trening_item.view.*
 import pl.nojkir.roomdatabase.R
+import pl.nojkir.roomdatabase.data.db.entities.Training
 import pl.nojkir.roomdatabase.ui.viewModels.ExerciseViewModel
+import pl.nojkir.roomdatabase.ui.viewModels.TrainingViewModel
 
 class TrainingsAdapter(
-    var items: List<String>,
-    private val viewModel: ExerciseViewModel
+    var items: List<Training>,
+    private val viewModel: TrainingViewModel
 
 ) : RecyclerView.Adapter<TrainingsAdapter.ExerciseViewHolder>() {
     inner class ExerciseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -39,18 +41,18 @@ class TrainingsAdapter(
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
 
-        val currentExercise = items[position]
+        val currentTraining = items[position]
 
-        holder.itemView.tv_TrainingName.text = currentExercise
+        holder.itemView.tv_TrainingName.text = currentTraining.trainingName
 
 
         val bundle = bundleOf(
-            "TrainingName" to currentExercise
+            "TrainingId" to currentTraining.id
 
         )
 
         holder.itemView.btDelete.setOnClickListener {
-            viewModel.deleteByName(currentExercise)
+            viewModel.delete(currentTraining)
 
         }
 

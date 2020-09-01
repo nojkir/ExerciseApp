@@ -14,30 +14,30 @@ import pl.nojkir.roomdatabase.other.TrainingsAdapter
 import pl.nojkir.roomdatabase.ui.dialogs.AddDialogListener
 import pl.nojkir.roomdatabase.ui.dialogs.AddExerciseDialog
 import pl.nojkir.roomdatabase.ui.viewModels.ExerciseViewModel
-
+import pl.nojkir.roomdatabase.ui.viewModels.TrainingViewModel
 
 
 @AndroidEntryPoint
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
     private val viewModel: ExerciseViewModel by viewModels()
+    private val trainingViewModel : TrainingViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = TrainingsAdapter(listOf(), viewModel)
+        val adapter = TrainingsAdapter(listOf(), trainingViewModel)
 
         rvExercises.layoutManager = LinearLayoutManager(requireContext())
         rvExercises.adapter = adapter
 
 
 
-
-
-        viewModel.getAllNames().observe(viewLifecycleOwner, Observer {
-            adapter.items = it.toSet().toList()
+        trainingViewModel.getAllTrainings().observe(viewLifecycleOwner, Observer {
+            adapter.items = it
             adapter.notifyDataSetChanged()
         })
+
 
 
 
