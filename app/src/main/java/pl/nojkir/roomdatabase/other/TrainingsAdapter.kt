@@ -42,11 +42,7 @@ class TrainingsAdapter(
 
         val currentExercise = items[position]
 
-
-
-
         holder.itemView.tv_TrainingName.text = currentExercise
-
 
 
         val bundle = bundleOf(
@@ -59,9 +55,11 @@ class TrainingsAdapter(
 
         }
 
-        holder.itemView.goToStatsButton.setOnClickListener(createNavigateOnClickListener(
-            R.id.action_trainingsFragment_to_statisticsFragment2, bundle
-        ))
+        holder.itemView.goToStatsButton.setOnClickListener(
+            createNavigateOnClickListener(
+                R.id.action_trainingsFragment_to_statisticsFragment2, bundle
+            )
+        )
 
 
         holder.itemView.setOnClickListener(

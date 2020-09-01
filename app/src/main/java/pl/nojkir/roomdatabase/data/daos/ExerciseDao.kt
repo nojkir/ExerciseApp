@@ -1,4 +1,4 @@
-package pl.nojkir.roomdatabase.data
+package pl.nojkir.roomdatabase.data.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

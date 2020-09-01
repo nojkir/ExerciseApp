@@ -36,7 +36,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesExerciseDao (db: ExerciseDataBase) = db.getExerciseDao()
+    fun providesExerciseDao(db: ExerciseDataBase) = db.getExerciseDao()
 
 
 }

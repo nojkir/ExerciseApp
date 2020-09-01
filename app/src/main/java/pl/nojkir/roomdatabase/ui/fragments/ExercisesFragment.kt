@@ -2,6 +2,7 @@ package pl.nojkir.roomdatabase.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -53,18 +54,11 @@ class ExercisesFragment : Fragment(R.layout.fragment_exercises) {
         buttonek.setOnClickListener {
             AddExerciseDialog(requireContext(), object : AddDialogListener {
                 override fun onAddButtonClicked(exercise: Exercise) {
-
                     viewModel.upsert(exercise)
                 }
             }).show()
 
         }
-
-
-
-
-
-
 
 
     }

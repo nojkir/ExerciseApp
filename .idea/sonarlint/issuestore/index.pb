@@ -45,3 +45,5 @@ r
 Bapp/src/main/java/pl/nojkir/roomdatabase/other/ExercisesAdapter.kt,7\9\79e5fc38852673927c61a1b514a6eec13f22b68d
 q
 Aapp/src/main/java/pl/nojkir/roomdatabase/ui/StopWatchViewModel.kt,4\3\43c149fbbbd2468034b3877cff75140d61638821
+u
+Eapp/src/main/java/pl/nojkir/roomdatabase/services/StopWatchService.kt,a\5\a5cd1736b4c4e6c057b2c0379f2503d8ffcbd558

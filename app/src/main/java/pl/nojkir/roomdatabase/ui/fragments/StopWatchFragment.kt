@@ -54,8 +54,8 @@ class StopWatchFragment : Fragment(R.layout.fragment_stopwatch) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pause.setOnClickListener{
-            if (isTracking){
+        pause.setOnClickListener {
+            if (isTracking) {
                 sendCommandToService(ACTION_PAUSE_SERVICE)
             }
         }
@@ -70,7 +70,7 @@ class StopWatchFragment : Fragment(R.layout.fragment_stopwatch) {
         subscribe()
     }
 
-    private fun subscribe (){
+    private fun subscribe() {
         StopWatchService.isTracking.observe(viewLifecycleOwner, Observer {
             updateTracking(it)
         })
@@ -84,19 +84,19 @@ class StopWatchFragment : Fragment(R.layout.fragment_stopwatch) {
 
     }
 
-    private fun updateTracking (isTracking : Boolean) {
+    private fun updateTracking(isTracking: Boolean) {
         this.isTracking = isTracking
 
     }
 
-    fun getFormattedStopWatchTime(ms: Long, includeMillis : Boolean = false) :String{
+    fun getFormattedStopWatchTime(ms: Long, includeMillis: Boolean = false): String {
         var milliseconds = ms
         val hours = TimeUnit.MILLISECONDS.toHours(milliseconds)
         milliseconds -= TimeUnit.HOURS.toMillis(hours)
         val minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds)
         milliseconds -= TimeUnit.MINUTES.toMillis(minutes)
         val seconds = TimeUnit.MILLISECONDS.toSeconds(milliseconds)
-        if (!includeMillis){
+        if (!includeMillis) {
             return "${if (hours < 10) "0" else ""}$hours:" +
                     "${if (minutes < 10) "0" else ""}$minutes:" +
                     "${if (seconds < 10) "0" else ""}$seconds"
@@ -110,13 +110,13 @@ class StopWatchFragment : Fragment(R.layout.fragment_stopwatch) {
                 "${if (milliseconds < 10) "0" else ""}$milliseconds"
     }
 
-    private fun sendCommandToService(action : String) {
-     Intent(requireContext(), StopWatchService::class.java).also {
-         it.action = action
-         requireContext().startService(it)
-     }
-     }
+    private fun sendCommandToService(action: String) {
+        Intent(requireContext(), StopWatchService::class.java).also {
+            it.action = action
+            requireContext().startService(it)
+        }
     }
+}
 
 
 

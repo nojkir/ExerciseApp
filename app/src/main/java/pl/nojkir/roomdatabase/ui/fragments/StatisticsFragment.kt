@@ -18,14 +18,14 @@ import pl.nojkir.roomdatabase.ui.ExerciseViewModel
 
 
 @AndroidEntryPoint
-class StatisticsFragment : Fragment (R.layout.fragment_statistics) {
+class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
 
     private val viewModel: ExerciseViewModel by viewModels()
-    private lateinit var trainings : List<Exercise>
-    private var volume : Double = 0.0
-    private var reps : Int = 0
-    private var sets  : Int = 0
-    private var exercises : Int = 0
+    private lateinit var trainings: List<Exercise>
+    private var volume: Double = 0.0
+    private var reps: Int = 0
+    private var sets: Int = 0
+    private var exercises: Int = 0
 
     lateinit var trainingName: String
 
@@ -34,11 +34,11 @@ class StatisticsFragment : Fragment (R.layout.fragment_statistics) {
         super.onCreate(savedInstanceState)
 
 
-            trainingName = requireArguments().getString("TrainingName").toString()
-
+        trainingName = requireArguments().getString("TrainingName").toString()
 
 
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -47,29 +47,23 @@ class StatisticsFragment : Fragment (R.layout.fragment_statistics) {
 
 
 
-            viewModel.findExercisesByTrainingName(trainingName)
-                .observe(viewLifecycleOwner, Observer {
-                    trainings = it
-                    for (training in trainings) {
-                        volume += training.weight * training.reps * training.amountOfSeries
-                        reps += training.reps
-                        sets += training.amountOfSeries
-                        exercises = trainings.size
-                    }
-                    statistics_trainingTV.text = trainingName
-                    statistics_VolumeTV.text = "Total training volume ${volume.toString()} kg"
-                    statistics_exercisesTV.text = "Exercises in training ${exercises.toString()}"
-                    statistics_repsTV.text = "Reps in training ${reps.toString()}"
-                    statistics_setsTV.text =  "Sets in training ${sets.toString()}"
+        viewModel.findExercisesByTrainingName(trainingName)
+            .observe(viewLifecycleOwner, Observer {
+                trainings = it
+                for (training in trainings) {
+                    volume += training.weight!! * training.reps!! * training.amountOfSeries!!
+                    reps += training.reps!!
+                    sets += training.amountOfSeries!!
+                    exercises = trainings.size
+                }
+                statistics_trainingTV.text = trainingName
+                statistics_VolumeTV.text = "Total training volume ${volume.toString()} kg"
+                statistics_exercisesTV.text = "Exercises in training ${exercises.toString()}"
+                statistics_repsTV.text = "Reps in training ${reps.toString()}"
+                statistics_setsTV.text = "Sets in training ${sets.toString()}"
 
 
-
-                })
-
-
-
-
-
+            })
 
 
     }

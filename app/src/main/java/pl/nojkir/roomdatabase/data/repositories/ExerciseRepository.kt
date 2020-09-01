@@ -1,7 +1,6 @@
 package pl.nojkir.roomdatabase.data.repositories
 
-import pl.nojkir.roomdatabase.data.ExerciseDao
-import pl.nojkir.roomdatabase.data.ExerciseDataBase
+import pl.nojkir.roomdatabase.data.daos.ExerciseDao
 import pl.nojkir.roomdatabase.data.db.entities.Exercise
 import javax.inject.Inject
 
@@ -13,11 +12,12 @@ class ExerciseRepository @Inject constructor(
 
     suspend fun deleteByName(trainingName: String) = db.deleteByName(trainingName)
 
-     fun getAllExercise() = db.getAllExercise()
+    fun getAllExercise() = db.getAllExercise()
 
-      fun getAllNames() = db.getAllNames()
+    fun getAllNames() = db.getAllNames()
 
-     fun findExercisesByTrainingName(trainingName : String) = db.findExercisesByTrainingName(trainingName)
+    fun findExercisesByTrainingName(trainingName: String) =
+        db.findExercisesByTrainingName(trainingName)
 }
 
 

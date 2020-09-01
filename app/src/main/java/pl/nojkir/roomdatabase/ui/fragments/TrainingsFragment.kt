@@ -16,6 +16,7 @@ import pl.nojkir.roomdatabase.ui.dialogs.AddExerciseDialog
 import pl.nojkir.roomdatabase.ui.ExerciseViewModel
 
 
+
 @AndroidEntryPoint
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
@@ -28,6 +29,7 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
         rvExercises.layoutManager = LinearLayoutManager(requireContext())
         rvExercises.adapter = adapter
+
 
 
 

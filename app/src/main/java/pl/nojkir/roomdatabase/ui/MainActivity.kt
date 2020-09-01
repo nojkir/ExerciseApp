@@ -34,12 +34,17 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.navHostFragment)
 
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.statisticsFragment, R.id.trainingsFragment,R.id.stopWatchFragment, R.id.exercisesFragment))
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.statisticsFragment,
+                R.id.trainingsFragment,
+                R.id.stopWatchFragment,
+                R.id.exercisesFragment
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-            bottomNavigationView.setupWithNavController(navController)
-        
-
+        bottomNavigationView.setupWithNavController(navController)
 
 
     }
@@ -50,8 +55,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun navigateToStopWatchFragmentIfNeeded(intent : Intent?) {
-        if (intent?.action == ACTION_SHOW_STOPWATCH_FRAGMENT){
+    private fun navigateToStopWatchFragmentIfNeeded(intent: Intent?) {
+        if (intent?.action == ACTION_SHOW_STOPWATCH_FRAGMENT) {
             navHostFragment.findNavController().navigate(R.id.action_global_stopWatchFragment)
         }
     }

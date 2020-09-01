@@ -30,30 +30,31 @@ import pl.nojkir.roomdatabase.ui.MainActivity
 import pl.nojkir.roomdatabase.ui.fragments.StopWatchFragment
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+
 @AndroidEntryPoint
 class StopWatchService : LifecycleService() {
 
     @Inject
-    lateinit var baseNotificationBuilder : NotificationCompat.Builder
+    lateinit var baseNotificationBuilder: NotificationCompat.Builder
 
-    lateinit var currentNotificationBuilder : NotificationCompat.Builder
+    lateinit var currentNotificationBuilder: NotificationCompat.Builder
 
-    companion object{
+    companion object {
         var timeInMillis = MutableLiveData<Long>()
         var isTracking = MutableLiveData<Boolean>()
     }
-    var serviceKilled = false
+
+    private var serviceKilled = false
     private val timeInSeconds = MutableLiveData<Long>()
-    private var isFirstRun : Boolean = true
+    private var isFirstRun: Boolean = true
     private val NOTIFICATION_ID = 1
 
-    private fun postInitialValues(){
+    private fun postInitialValues() {
         isTracking.postValue(false)
         timeInMillis.postValue(0L)
         timeInSeconds.postValue(0L)
 
     }
-
 
 
     override fun onCreate() {
@@ -69,12 +70,12 @@ class StopWatchService : LifecycleService() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
         intent?.let {
-            when(it.action){
+            when (it.action) {
                 ACTION_START_OR_RESUME_SERVICE ->
-                    if (isFirstRun){
+                    if (isFirstRun) {
                         startForegroundService()
                         isFirstRun = false
-                    }else{
+                    } else {
                         startTimer()
                     }
                 ACTION_PAUSE_SERVICE -> pausesService()
@@ -90,7 +91,8 @@ class StopWatchService : LifecycleService() {
 
         return super.onStartCommand(intent, flags, startId)
     }
-    private fun killService(){
+
+    private fun killService() {
         serviceKilled = true
         isFirstRun = true
         pausesService()
@@ -105,17 +107,17 @@ class StopWatchService : LifecycleService() {
     private var timeStarted = 0L
     private var lastSecondTimeStamp = 0L
 
-    private fun startTimer(){
+    private fun startTimer() {
         isTracking.postValue(true)
         timeStarted = System.currentTimeMillis()
         isTimerEnabled = true
         CoroutineScope(Dispatchers.Main).launch {
-            while (isTracking.value!!){
+            while (isTracking.value!!) {
                 //Time difference between now and timer started
                 lapTime = System.currentTimeMillis() - timeStarted
                 // Post new lap time
                 timeInMillis.postValue(timeRun + lapTime)
-                if (timeInMillis.value!! >= lastSecondTimeStamp +1000L){
+                if (timeInMillis.value!! >= lastSecondTimeStamp + 1000L) {
                     timeInSeconds.postValue(timeInSeconds.value!! + 1)
                     lastSecondTimeStamp += 1000L
                 }
@@ -125,18 +127,19 @@ class StopWatchService : LifecycleService() {
         }
     }
 
-    private fun pausesService(){
+    private fun pausesService() {
         isTracking.postValue(false)
         isTimerEnabled = false
     }
 
-    private fun startForegroundService(){
+    private fun startForegroundService() {
         startTimer()
         isTracking.postValue(true)
 
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel(notificationManager)
         }
         startForeground(NOTIFICATION_ID, baseNotificationBuilder.build())
@@ -153,7 +156,7 @@ class StopWatchService : LifecycleService() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun createNotificationChannel (notificationManager: NotificationManager){
+    private fun createNotificationChannel(notificationManager: NotificationManager) {
         val channel = NotificationChannel(
             NOTIFICATION_CHANNEL_ID,
             NOTIFICATION_CHANNEL_NAME,
@@ -163,40 +166,42 @@ class StopWatchService : LifecycleService() {
         notificationManager.createNotificationChannel(channel)
     }
 
-private fun updateNotificationTrackingState( isTracking: Boolean){
-    val notificationActionText = if (isTracking) "Pause" else "Resume"
-    val pendingIntent = if (isTracking){
-        val pauseIntent = Intent(this, StopWatchService::class.java).apply {
-            action = ACTION_PAUSE_SERVICE
+    private fun updateNotificationTrackingState(isTracking: Boolean) {
+        val notificationActionText = if (isTracking) "Pause" else "Resume"
+        val pendingIntent = if (isTracking) {
+            val pauseIntent = Intent(this, StopWatchService::class.java).apply {
+                action = ACTION_PAUSE_SERVICE
+            }
+            PendingIntent.getService(this, 1, pauseIntent, FLAG_UPDATE_CURRENT)
+        } else {
+            val resumeIntent = Intent(this, StopWatchService::class.java).apply {
+                action = ACTION_START_OR_RESUME_SERVICE
+            }
+            getService(this, 2, resumeIntent, FLAG_UPDATE_CURRENT)
         }
-        PendingIntent.getService(this, 1 , pauseIntent, FLAG_UPDATE_CURRENT)
-    } else {
-        val resumeIntent = Intent(this, StopWatchService::class.java).apply {
-            action = ACTION_START_OR_RESUME_SERVICE
+
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        currentNotificationBuilder.javaClass.getDeclaredField("mActions").apply {
+            isAccessible = true
+            set(currentNotificationBuilder, ArrayList<NotificationCompat.Action>())
         }
-        getService(this, 2, resumeIntent, FLAG_UPDATE_CURRENT)
-    }
-
-    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-    currentNotificationBuilder.javaClass.getDeclaredField("mActions").apply {
-        isAccessible = true
-        set(currentNotificationBuilder, ArrayList<NotificationCompat.Action>())
-    }
         if (!serviceKilled) {
             currentNotificationBuilder = baseNotificationBuilder
                 .addAction(R.drawable.ic_timer, notificationActionText, pendingIntent)
             notificationManager.notify(NOTIFICATION_ID, currentNotificationBuilder.build())
         }
-}
-    fun getFormattedStopWatchTime(ms: Long, includeMillis : Boolean = false) :String{
+    }
+
+    fun getFormattedStopWatchTime(ms: Long, includeMillis: Boolean = false): String {
         var milliseconds = ms
         val hours = TimeUnit.MILLISECONDS.toHours(milliseconds)
         milliseconds -= TimeUnit.HOURS.toMillis(hours)
         val minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds)
         milliseconds -= TimeUnit.MINUTES.toMillis(minutes)
         val seconds = TimeUnit.MILLISECONDS.toSeconds(milliseconds)
-        if (!includeMillis){
+        if (!includeMillis) {
             return "${if (hours < 10) "0" else ""}$hours:" +
                     "${if (minutes < 10) "0" else ""}$minutes:" +
                     "${if (seconds < 10) "0" else ""}$seconds"
