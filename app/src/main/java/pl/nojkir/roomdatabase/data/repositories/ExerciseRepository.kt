@@ -14,10 +14,10 @@ class ExerciseRepository @Inject constructor(
 
     fun getAllExercise() = db.getAllExercise()
 
-    fun getAllNames() = db.getAllNames()
 
-    fun findExercisesByTrainingName(trainingName: String) =
-        db.findExercisesByTrainingName(trainingName)
+
+    fun findExercisesByTrainingName(trainingId: Int) =
+        db.findExercisesByTrainingName(trainingId)
 }
 
 
