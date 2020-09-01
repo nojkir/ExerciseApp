@@ -24,7 +24,7 @@ interface ExerciseDao {
 
 
     @Query("SELECT * FROM exercises_table WHERE training_id = :trainingId")
-    fun findExercisesByTrainingName(trainingId: Int): LiveData<List<Exercise>>
+    fun findExercisesByTrainingId(trainingId: Int): LiveData<List<Exercise>>
 
 
 }

@@ -27,8 +27,8 @@ class ExerciseViewModel @ViewModelInject constructor(
 
 
 
-    fun findExercisesByTrainingName(trainingId: Int) =
-        repository.findExercisesByTrainingName(trainingId)
+    fun findExercisesByTrainingId(trainingId: Int) =
+        repository.findExercisesByTrainingId(trainingId)
 
 
 }

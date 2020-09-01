@@ -44,12 +44,12 @@ class ExercisesFragment : Fragment(R.layout.fragment_exercises) {
 
 
 
-        viewModel.findExercisesByTrainingName(trainingId.toInt()).observe(viewLifecycleOwner, Observer {
+        viewModel.findExercisesByTrainingId(trainingId.toInt()).observe(viewLifecycleOwner, Observer {
             adapter.items = it
             adapter.notifyDataSetChanged()
         })
 
-        buttonek.setOnClickListener {
+        FAB_ADD_EXERCISE.setOnClickListener {
             AddExerciseDialog(requireContext(), object : AddDialogListener {
                 override fun onAddButtonClicked(exercise: Exercise) {
                     exercise.trainingId = trainingId.toInt()

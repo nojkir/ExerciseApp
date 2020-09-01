@@ -16,8 +16,8 @@ class ExerciseRepository @Inject constructor(
 
 
 
-    fun findExercisesByTrainingName(trainingId: Int) =
-        db.findExercisesByTrainingName(trainingId)
+    fun findExercisesByTrainingId(trainingId: Int) =
+        db.findExercisesByTrainingId(trainingId)
 }
 
 

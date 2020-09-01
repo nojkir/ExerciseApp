@@ -46,7 +46,7 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
 
 
-button.setOnClickListener {
+FAB_ADD_TRAINING.setOnClickListener {
     showAddTrainingDialog()
 }
 

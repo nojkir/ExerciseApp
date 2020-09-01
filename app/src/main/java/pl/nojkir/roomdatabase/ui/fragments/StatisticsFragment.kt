@@ -22,6 +22,7 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
     private var sets: Int = 0
     private var exercises: Int = 0
 
+    lateinit var trainingId: String
     lateinit var trainingName: String
 
 
@@ -29,6 +30,7 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
         super.onCreate(savedInstanceState)
 
 
+        trainingId = requireArguments().getString("TrainingId").toString()
         trainingName = requireArguments().getString("TrainingName").toString()
 
 
@@ -42,23 +44,23 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
 
 
 
-//        viewModel.findExercisesByTrainingName(trainingName)
-//            .observe(viewLifecycleOwner, Observer {
-//                trainings = it
-//                for (training in trainings) {
-//                    volume += training.weight!! * training.reps!! * training.amountOfSeries!!
-//                    reps += training.reps!!
-//                    sets += training.amountOfSeries!!
-//                    exercises = trainings.size
-//                }
-//                statistics_trainingTV.text = trainingName
-//                statistics_VolumeTV.text = "Total training volume ${volume.toString()} kg"
-//                statistics_exercisesTV.text = "Exercises in training ${exercises.toString()}"
-//                statistics_repsTV.text = "Reps in training ${reps.toString()}"
-//                statistics_setsTV.text = "Sets in training ${sets.toString()}"
-//
-//
-//            })
+        viewModel.findExercisesByTrainingId(trainingId.toInt())
+            .observe(viewLifecycleOwner, Observer {
+                trainings = it
+                for (training in trainings) {
+                    volume += training.weight * training.reps * training.amountOfSeries
+                    reps += training.reps
+                    sets += training.amountOfSeries
+                    exercises = trainings.size
+                }
+                statistics_trainingTV.text = trainingName
+                statistics_VolumeTV.text = "Total training volume ${volume.toString()} kg"
+                statistics_exercisesTV.text = "Exercises in training ${exercises.toString()}"
+                statistics_repsTV.text = "Reps in training ${reps.toString()}"
+                statistics_setsTV.text = "Sets in training ${sets.toString()}"
+
+
+            })
 
 
     }
