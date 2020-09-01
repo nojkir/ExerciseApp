@@ -11,5 +11,5 @@ class TrainingRepository @Inject constructor(
     suspend fun upsert(training: Training) = dao.upsert(training)
     suspend fun delete (training: Training) = dao.delete(training)
 
-    fun getAllTraining() = dao.getAllTrainings()
+    fun getAllTrainings() = dao.getAllTrainings()
 }
