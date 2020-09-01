@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel : ExerciseViewModel by viewModels()
+    private val viewModel: ExerciseViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

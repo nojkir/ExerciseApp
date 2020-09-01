@@ -9,12 +9,13 @@ import pl.nojkir.roomdatabase.data.db.entities.Exercise
 import pl.nojkir.roomdatabase.data.repositories.ExerciseRepository
 
 class ExerciseViewModel @ViewModelInject constructor(
-    private val repository : ExerciseRepository
-) :  ViewModel(){
-        fun upsert ( exercise: Exercise) = CoroutineScope(Dispatchers.Main).launch {
-            repository.upsert(exercise)
-        }
-        fun delete ( exercise: Exercise) = CoroutineScope(Dispatchers.Main).launch {
+    private val repository: ExerciseRepository
+) : ViewModel() {
+    fun upsert(exercise: Exercise) = CoroutineScope(Dispatchers.Main).launch {
+        repository.upsert(exercise)
+    }
+
+    fun delete(exercise: Exercise) = CoroutineScope(Dispatchers.Main).launch {
         repository.delete(exercise)
     }
 
