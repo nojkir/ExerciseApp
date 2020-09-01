@@ -31,7 +31,7 @@ class AddExerciseDialog (context: Context, var addDialogListener: AddDialogListe
 
 
             val exercise = Exercise(
-                trainingName,
+                0,
                 exerciseName,
                 sets.toInt(),
                 weight.toDouble(),

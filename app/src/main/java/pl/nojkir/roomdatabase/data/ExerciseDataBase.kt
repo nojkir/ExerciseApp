@@ -10,7 +10,7 @@ import pl.nojkir.roomdatabase.data.db.entities.Training
 
 @Database(
     entities = [Exercise::class, Training::class],
-    version = 1
+    version = 2
 
 )
 abstract class ExerciseDataBase : RoomDatabase() {

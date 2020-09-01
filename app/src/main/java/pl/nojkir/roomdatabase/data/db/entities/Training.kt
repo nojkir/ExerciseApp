@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 data class Training (
 
     @ColumnInfo(name = "training_name")
-    var trainingName: String)
+    var trainingName: String )
 
 {
 

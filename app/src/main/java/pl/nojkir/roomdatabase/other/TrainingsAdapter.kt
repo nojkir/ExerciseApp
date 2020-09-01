@@ -47,7 +47,7 @@ class TrainingsAdapter(
 
 
         val bundle = bundleOf(
-            "TrainingId" to currentTraining.id
+            "TrainingId" to currentTraining.id.toString()
 
         )
 

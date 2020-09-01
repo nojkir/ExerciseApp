@@ -29,7 +29,7 @@ class ExercisesFragment : Fragment(R.layout.fragment_exercises) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        trainingId = requireArguments().getBundle("TrainingId").toString()
+        trainingId = requireArguments().getString("TrainingId").toString()
 
 
     }
@@ -52,6 +52,7 @@ class ExercisesFragment : Fragment(R.layout.fragment_exercises) {
         buttonek.setOnClickListener {
             AddExerciseDialog(requireContext(), object : AddDialogListener {
                 override fun onAddButtonClicked(exercise: Exercise) {
+                    exercise.trainingId = trainingId.toInt()
                     viewModel.upsert(exercise)
                 }
             }).show()
